@@ -1,0 +1,19 @@
+version: '3.4'
+
+
+services:
+  app:
+    container_name: app
+    build:
+      context: Dockerfiles/php/
+    working_dir: /app
+    volumes:
+      - ./:/app
+    expose:
+      - "9000"
+  db:
+    container_name: mysql
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: amp_test
+      MYSQL_ROOT_PASSWORD: root
