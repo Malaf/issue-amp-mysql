@@ -30,11 +30,7 @@ NOWDOC
         echo $e->getMessage() . PHP_EOL . PHP_EOL;
     }
 
-    try {
-        yield $pool->execute("INSERT INTO test_amp (uniq) VALUES (:value);", ['value' => 2]);
-    } catch (\Throwable $exception) {
-        echo $exception->getMessage() . PHP_EOL . PHP_EOL;
-    }
+    yield $pool->execute("INSERT INTO test_amp (uniq) VALUES (:value);", ['value' => 2]);
 });
 
 Amp\Promise\wait($promise);
